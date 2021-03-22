@@ -1,14 +1,10 @@
-import ContactForm from "./contactForm/ContactForm";
-import ContactFilter from "./contactsFilter/ContactFilter";
-import ContactList from "./contactList/ContactList.jsx";
+import Header from "./header/Header";
 
 function App() {
   return (
-    <div className="thumb">
-      <ContactForm />
-      <ContactFilter />
-      <ContactList />
-    </div>
+    <>
+      <Header />
+    </>
   );
 }
 
