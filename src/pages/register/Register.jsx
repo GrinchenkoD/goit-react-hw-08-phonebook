@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { register } from '../../redux/auth/auth.operations'
 import styles from "./Register.module.css"
 
 
@@ -7,7 +9,7 @@ const InitialState = {
     email: '',
     password:''
 }
-export default class Register extends Component {
+ class Register extends Component {
 
      state = {
         ...InitialState
@@ -17,12 +19,17 @@ export default class Register extends Component {
         const { name, value } = event.target
         this.setState({[name]:value})
     }
+     
+handleSubmit = (event) => {
+    event.preventDefault();
+    this.props.register(this.state)
+    }
 
     render() {
 const {name, email, password} = this.state
 
         return (
-            <form className={styles.form}>
+            <form className={styles.form} onSubmit={this.handleSubmit}>
                 <label htmlFor="name"  className={styles.label}> Name
                     <input id="name"
                         name='name'
@@ -61,3 +68,12 @@ const {name, email, password} = this.state
         )
     }
 }
+
+
+
+const mapDispatchToProps = {
+    register
+}
+
+
+export default connect(null, mapDispatchToProps ) (Register)
