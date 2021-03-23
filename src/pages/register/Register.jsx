@@ -1,19 +1,20 @@
 import React, { Component } from 'react'
+import styles from "./Register.module.css"
 
 export default class Register extends Component {
     render() {
         return (
-            <form>
-                <label htmlFor=""> Name
-                    <input type="text" />
+            <form className={styles.form}>
+                <label htmlFor="name"  className={styles.label}> Name
+                    <input id="name" name='email' type="text" className={styles.input} placeholder="Name*" required />
                 </label>
-                <label htmlFor="">Email
-                    <input type="mail" />
+                <label htmlFor="email"  className={styles.label}>Email
+                    <input id="email" name='email' type="mail" className={styles.input} placeholder="Email*" required />
                 </label>
-                <label htmlFor="">Password
-                    <input type="password" />
+                <label htmlFor="password"  className={styles.label}>Password
+                    <input id="password" name='password' type="password" className={styles.input} placeholder="Password*" required />
                 </label>
-                <button type="submit">Sign up</button>
+                <button type="submit"  className={styles.submitBtn}>Sign up</button>
             </form>
         )
     }

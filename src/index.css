@@ -3,6 +3,7 @@
 *::before {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 body {
@@ -23,8 +24,14 @@ code {
 ul {
   list-style: none;
 }
-#root {
+
+img {
+  display: block;
 }
+a {
+  text-decoration: none;
+}
+
 .thumb {
   padding-top: 10px;
   width: 60%;

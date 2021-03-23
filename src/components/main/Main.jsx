@@ -7,16 +7,18 @@ import Register from '../../pages/register/Register'
 
 
 
+
 const Main = () => {
     return (
-        <Switch>
-            <Route exact path="/" component={Homepage} />
-            <Route path="/register" component= {Register}/> 
-            <Route path="/login" component={Login}/>
-            <Route path="/contacts" component={Contacts}/>
+        <main className='thumb'>
+            <Switch>
+                <Route exact path="/" component={Homepage} />
+                <Route path="/register" component= {Register}/> 
+                <Route path="/login" component={Login}/>
+                <Route path="/contacts" component={Contacts}/>
 
-        </Switch>
-
+            </Switch>
+        </main> 
     )
 
 

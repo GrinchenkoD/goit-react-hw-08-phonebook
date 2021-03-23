@@ -5,7 +5,7 @@ import ContactFilter from '../../components/contactsFilter/ContactFilter'
 
 const Contacts = () => {
     return (
-    <div className="thumb">
+    <div className="">
       <ContactForm />
       <ContactFilter />
       <ContactList />

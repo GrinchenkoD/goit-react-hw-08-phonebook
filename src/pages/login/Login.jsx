@@ -1,16 +1,18 @@
 import React, { Component } from 'react'
 
+import styles from "./Login.module.css"
+
 export default class Login extends Component {
     render() {
         return (
-            <form >
-                <label htmlFor="">Email
-                    <input type="mail" />
+            <form className={styles.form}>
+                <label htmlFor="email" className={styles.label}>Email
+                    <input id="email" name='email' type="mail" className={styles.input} placeholder="Email*" required />
                 </label>
-                <label htmlFor="">Password
-                    <input type="password" />
+                <label htmlFor="password"  className={styles.label}>Password
+                    <input id="password" name='password' type="password" className={styles.input} placeholder="Password*" required />
                 </label>
-                <button type="submit">Log in</button>
+                <button type="submit"  className={styles.submitBtn}>Log in</button>
             </form>
         )
     }
