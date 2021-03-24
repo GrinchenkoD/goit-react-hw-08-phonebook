@@ -11,7 +11,7 @@ import {
   getContactsRequest,
 } from "./contacts.actions";
 
-axios.defaults.baseURL = "http://localhost:3004";
+// axios.defaults.baseURL = "http://localhost:3004";
 
 const getContacts = () => async (dispatch) => {
   dispatch(getContactsRequest());
@@ -19,7 +19,7 @@ const getContacts = () => async (dispatch) => {
     const { data } = await axios.get("/contacts");
     dispatch(getContactsSuccess(data));
   } catch (error) {
-    dispatch(getContactsError(error));
+    dispatch(getContactsError(error.message));
   }
 };
 
@@ -30,19 +30,18 @@ const addContact = (contact) => async (dispatch) => {
 
     dispatch(addContactSuccess(data));
   } catch (error) {
-    dispatch(addContactError(error));
+    dispatch(addContactError(error.message));
   }
 };
 
 const removeContact = (id) => async (dispatch) => {
   dispatch(removeContactRequest());
   try {
-    const { status } = await axios.delete(`/contacts/${id}`);
-    if (status === 200) {
-      dispatch(removeContactSuccess(id));
-    }
+    await axios.delete(`/contacts/${id}`);
+
+    dispatch(removeContactSuccess(id));
   } catch (error) {
-    dispatch(removeContactError(error));
+    dispatch(removeContactError(error.message));
   }
 };
 

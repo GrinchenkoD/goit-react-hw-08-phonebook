@@ -16,9 +16,18 @@ import {
 
 const InitialState = { name: "", email: "" };
 
-const user = createReducer(InitialState, {});
+const user = createReducer(InitialState, {
+  [registerSuccess]: (_, { payload }) => payload.user,
+  [loginSuccess]: (_, { payload }) => payload.user,
+  [getCurrentUserSuccess]: (_, { payload }) => payload,
+  [logoutSuccess]: () => InitialState,
+});
 
-const token = createReducer(null, {});
+const token = createReducer(null, {
+  [registerSuccess]: (_, { payload }) => payload.token,
+  [loginSuccess]: (_, { payload }) => payload.token,
+  [logoutSuccess]: () => null,
+});
 
 const cleanError = () => null;
 const handleError = (_, action) => action.payload;

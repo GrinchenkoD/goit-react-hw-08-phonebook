@@ -45,7 +45,7 @@ const errorReducer = createReducer(null, {
   [addContactRequest]: cleanError,
   [removeContactRequest]: cleanError,
   [getContactsError]: handleError,
-  [addContactError]: handleError,
+  [addContactError]: (_, action) => action.payload,
   [removeContactError]: handleError,
 });
 

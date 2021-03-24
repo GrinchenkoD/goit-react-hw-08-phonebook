@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { register } from '../../redux/auth/auth.operations'
+import { getIsAuthSelector } from '../../redux/auth/auth.selectors'
 import styles from "./Register.module.css"
 
 
@@ -22,8 +23,11 @@ const InitialState = {
      
 handleSubmit = (event) => {
     event.preventDefault();
-    this.props.register(this.state)
-    }
+    this.props.register(this.state).then(() => {
+         if (this.props.isAuth) {
+        this.props.history.push("/contacts")
+    }})   
+}
 
     render() {
 const {name, email, password} = this.state
@@ -69,11 +73,13 @@ const {name, email, password} = this.state
     }
 }
 
-
+const mapStateToProps = (state)=> ({
+   isAuth: getIsAuthSelector(state)
+})
 
 const mapDispatchToProps = {
     register
 }
 
 
-export default connect(null, mapDispatchToProps ) (Register)
+export default connect(mapStateToProps, mapDispatchToProps ) (Register)

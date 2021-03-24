@@ -1,4 +1,7 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { logIn } from '../../redux/auth/auth.operations'
+import { getIsAuthSelector } from '../../redux/auth/auth.selectors'
 
 import styles from "./Login.module.css"
 
@@ -6,7 +9,7 @@ const InitialState = {
     email: '',
     password:''
 }
-export default class Login extends Component {
+class Login extends Component {
 
     state = {
         ...InitialState
@@ -16,11 +19,19 @@ export default class Login extends Component {
         this.setState({[name]:value})
     }
 
+    handleSubmit = (event) => {
+        event.preventDefault();
+        this.props.onLogin(this.state).then(() => {
+         if (this.props.isAuth) {
+        this.props.history.push("/contacts")
+    }})   
+    }
+
 
     render() {
         const {email, password}=this.state
         return (
-            <form className={styles.form}>
+            <form className={styles.form} onSubmit={this.handleSubmit}>
                 <label htmlFor="email" className={styles.label}>Email
                     <input id="email"
                         name='email'
@@ -48,3 +59,14 @@ export default class Login extends Component {
         )
     }
 }
+
+const mapStateToProps = (state)=> ({
+   isAuth: getIsAuthSelector(state)
+})
+
+const mapDispatchToProps = {
+   onLogin: logIn,
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps) (Login)

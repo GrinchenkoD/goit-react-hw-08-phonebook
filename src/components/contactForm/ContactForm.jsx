@@ -8,7 +8,7 @@ import styles from "./ContactForm.module.css"
 
 const InitialState = {
     name: "",
-    phone: ""
+    number: ""
 }
 
 class ContactForm extends Component {
@@ -34,7 +34,7 @@ class ContactForm extends Component {
 
 
     render() {
-        const { name, phone } = this.state
+        const { name, number } = this.state
         return (
             <div className={styles.container}>
                 <h2 className={styles.title}>Phonebook</h2>
@@ -43,8 +43,8 @@ class ContactForm extends Component {
                     <input id="name" type="text" name="name" value={name} onChange={this.handleChange}
                         placeholder="Name*" required className={styles.input} />
 
-                    <label htmlFor="phone" className={styles.label}>Number</label>
-                    <input id="phone" type="tel" name="phone" value={phone} onChange={this.handleChange}
+                    <label htmlFor="number" className={styles.label}>Number</label>
+                    <input id="number" type="tel" name="number" value={number} onChange={this.handleChange}
                         placeholder="Phone number*" required className={styles.input} />
 
                     <button

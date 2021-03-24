@@ -12,8 +12,9 @@ class ContactList extends PureComponent {
      
 
     componentDidMount() {
-    this.props.getContacts()
+     this.props.getContacts()
     }
+  
 
 
     handleDelete = (event) => {
@@ -36,7 +37,7 @@ render() {
                                 <p className={styles.text}>{contact.name}</p>
                             </div>
                             <div className={styles.textThumb}>
-                                <p className={styles.text}>{contact.phone}</p>
+                                <p className={styles.text}>{contact.number}</p>
                             </div>
                             <button
                                 type="button"
