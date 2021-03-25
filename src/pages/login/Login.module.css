@@ -10,7 +10,7 @@
 .input {
   display: block;
   height: 2.5rem;
-  width: 90%;
+  width: 100%;
   padding: 5px 10px;
   margin: 10px 0px;
 
@@ -37,7 +37,7 @@
 .submitBtn {
   position: relative;
   left: 50%;
-  transform: translateX(-50%);
+  /* transform: translateX(-50%); */
   font-size: 16px;
   padding: 8px 15px;
   margin-top: 10px;

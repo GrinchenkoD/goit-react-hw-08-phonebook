@@ -1,5 +1,6 @@
 import { createReducer } from "@reduxjs/toolkit";
 import { combineReducers } from "redux";
+import { logoutSuccess } from "../auth/auth.actions";
 import {
   filterChange,
   removeContactError,
@@ -17,8 +18,9 @@ const contactsReducer = createReducer([], {
   [getContactsSuccess]: (_, action) => [...action.payload],
   [addContactSuccess]: (state, action) => [...state, action.payload],
   [removeContactSuccess]: (state, action) => [
-    ...state.filter((contact) => contact.id !== +action.payload),
+    ...state.filter((contact) => contact.id !== action.payload),
   ],
+  [logoutSuccess]: () => [],
 });
 
 const filterReducer = createReducer("", {
