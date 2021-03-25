@@ -1,9 +1,11 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import { NavLink, Link } from 'react-router-dom'
+import { getIsAuthSelector } from '../../redux/auth/auth.selectors'
 
 import styles from "./Navigation.module.css"
 
-const Navigation = () => {
+const Navigation = ({isAuth}) => {
     return (
         <div className={styles.thumb}>
             <span><Link to="/" className={styles.logo}>LOGO</Link></span>
@@ -14,15 +16,22 @@ const Navigation = () => {
                             Главная
                             </NavLink>
                     </li>
-                    <li className={styles.item}>
+
+                    {!!isAuth&&
+                   ( <li className={styles.item}>
                         <NavLink to="/contacts" className={styles.link} activeClassName={styles.activeLink}>
                             Контакты
-                            </NavLink>
-                    </li>
+                        </NavLink>
+                    </li>)}
                 </ul>
             </nav>
         </div>
     )
 }
 
-export default Navigation
+const mapStateToProps = (state)=> ({
+   isAuth: getIsAuthSelector(state)
+})
+
+
+export default connect(mapStateToProps,null) (Navigation)
